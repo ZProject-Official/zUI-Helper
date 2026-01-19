@@ -2,6 +2,7 @@
   "name": "zui-helper",
   "displayName": "zui-helper",
   "description": "Aide à la syntaxe et snippets pour la librairie zUI.",
+  "license": "MIT",
   "publisher": "zSquad",
   "icon": "icon.png",
   "author": {
