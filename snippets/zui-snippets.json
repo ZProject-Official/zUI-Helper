@@ -1,0 +1,208 @@
+{
+	"zUI Initialization": {
+		"prefix": "zinit",
+		"body": [
+			"local zUI = exports[\"zUI-v2\"]:getObject()"
+		],
+		"description": "Initialize zUI object"
+	},
+	"zUI Create Menu": {
+		"prefix": "zmenu",
+		"body": [
+			"local ${1:monMenu} = zUI.CreateMenu(",
+			"    \"${2:Titre du Menu}\",",
+			"    \"${3:Sous-titre}\",",
+			"    \"${4:Description du menu}\",",
+			"    \"${5:default}\",",
+			"    \"${6:https://example.com/banner.png}\",",
+			"    \"${7:F5}\",",
+			"    \"${8:La description du mapping}\"",
+			")"
+		],
+		"description": "Create a new zUI menu"
+	},
+	"zUI Create SubMenu": {
+		"prefix": "zsubmenu",
+		"body": [
+			"local ${1:monSousMenu} = zUI.CreateSubMenu(",
+			"    ${2:parentMenu},",
+			"    \"${3:Titre du Sous-Menu}\",",
+			"    \"${4:Sous-titre}\",",
+			"    \"${5:Description du sous-menu}\"",
+			")"
+		],
+		"description": "Create a new zUI submenu"
+	},
+	"zUI Set Items": {
+		"prefix": "zitems",
+		"body": [
+			"zUI.SetItems(${1:menu}, function()",
+			"    $0",
+			"end)"
+		],
+		"description": "Define items for a menu"
+	},
+	"zUI Button": {
+		"prefix": "zbtn",
+		"body": [
+			"zUI.Button(\"${1:Mon Bouton}\", \"${2:Description}\", {",
+			"    IsDisabled = false,",
+			"    RightLabel = \"${3:→}\",",
+			"    RightBadge = \"${4:}\",",
+			"    LeftBadge = \"${5:}\"",
+			"}, function(onSelected)",
+			"    if onSelected then",
+			"        ${6:print(\"Bouton cliqué !\")}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a button item"
+	},
+	"zUI Checkbox": {
+		"prefix": "zcheck",
+		"body": [
+			"zUI.Checkbox(\"${1:Label}\", \"${2:Description}\", ${3:state}, {",
+			"    IsDisabled = false",
+			"}, function(onSelected)",
+			"    if onSelected then",
+			"        ${3:state} = not ${3:state}",
+			"        ${4:-- Action}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a checkbox item"
+	},
+	"zUI List": {
+		"prefix": "zlist",
+		"body": [
+			"zUI.List(\"${1:Label}\", \"${2:Description}\", ${3:items}, ${4:index}, {",
+			"    IsDisabled = false",
+			"}, function(onSelected, onChange, index)",
+			"    if onChange then",
+			"        ${4:index} = index",
+			"    end",
+			"    if onSelected then",
+			"        ${5:-- Action}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a list item"
+	},
+	"zUI Slider": {
+		"prefix": "zslider",
+		"body": [
+			"zUI.Slider(\"${1:Label}\", \"${2:Description}\", ${3:percentage}, ${4:step}, {",
+			"    IsDisabled = false,",
+			"    ShowPercentage = true",
+			"}, function(onSelected, onChange, percentage)",
+			"    if onChange then",
+			"        ${3:percentage} = percentage",
+			"        ${5:-- Apply value}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a slider item"
+	},
+	"zUI ColorPicker": {
+		"prefix": "zcolor",
+		"body": [
+			"zUI.ColorPicker(\"${1:Label}\", \"${2:Description}\", ${3:value}, {",
+			"    IsDisabled = false",
+			"}, function(onChange, value)",
+			"    if onChange then",
+			"        ${3:value} = value",
+			"        ${4:-- Apply color}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a color picker item"
+	},
+	"zUI ColorsList": {
+		"prefix": "zcolorlist",
+		"body": [
+			"zUI.ColorsList(\"${1:Label}\", \"${2:Description}\", ${3:colors}, ${4:index}, {",
+			"    IsDisabled = false",
+			"}, function(onSelected, onChange, index)",
+			"    if onChange then",
+			"        ${4:index} = index",
+			"    end",
+			"    if onSelected then",
+			"        ${5:-- Apply color}",
+			"    end",
+			"end)"
+		],
+		"description": "Add a colors list item"
+	},
+	"zUI TextArea": {
+		"prefix": "ztext",
+		"body": [
+			"zUI.TextArea(\"${1:Label}\", \"${2:Description}\", ${3:value}, \"${4:Placeholder}\", {",
+			"    IsDisabled = false",
+			"}, function(onChange, value)",
+			"    if onChange then",
+			"        ${3:value} = value",
+			"    end",
+			"end)"
+		],
+		"description": "Add a text area item"
+	},
+	"zUI SearchBar": {
+		"prefix": "zsearch",
+		"body": [
+			"zUI.SearchBar(\"${1:Label}\", \"${2:Description}\", ${3:value}, \"${4:Placeholder}\", {",
+			"    IsDisabled = false",
+			"}, function(onChange, value)",
+			"    if onChange then",
+			"        ${3:value} = value",
+			"    end",
+			"end)"
+		],
+		"description": "Add a search bar item"
+	},
+	"zUI LinkButton": {
+		"prefix": "zlink",
+		"body": [
+			"zUI.LinkButton(\"${1:Label}\", \"${2:Description}\", \"${3:https://link.com}\", {",
+			"    IsDisabled = false",
+			"})"
+		],
+		"description": "Add a link button item"
+	},
+	"zUI Line": {
+		"prefix": "zline",
+		"body": [
+			"zUI.Line({${1:\"#FF0000\", \"#00FF00\", \"#0000FF\"}})"
+		],
+		"description": "Add a gradient line"
+	},
+	"zUI Separator": {
+		"prefix": "zsep",
+		"body": [
+			"zUI.Separator(\"${1:Label}\", \"${2|center,left,right|}\")"
+		],
+		"description": "Add a separator"
+	},
+	"zUI Set Visible": {
+		"prefix": "zvisible",
+		"body": [
+			"zUI.SetVisible(${1:monMenu}, ${2:true})"
+		],
+		"description": "Set menu visibility"
+	},
+	"zUI Show Info Box": {
+		"prefix": "zinfo",
+		"body": [
+			"zUI.ShowInfoBox(",
+			"    \"${1:Titre}\",",
+			"    \"${2:Description}\",",
+			"    \"${3:default}\",",
+			"    {",
+			"        { type = \"text\",    title = \"${4:Label}\", value = \"${5:Value}\" },",
+			"        { type = \"percent\", title = \"${6:Label}\", value = ${7:50} },",
+			"        { type = \"image\",   title = \"${8:Label}\", value = \"${9:https://example.com/img.jpg}\" }",
+			"    }",
+			")"
+		],
+		"description": "Show an info box"
+	}
+}
